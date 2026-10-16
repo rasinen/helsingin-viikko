@@ -1,0 +1,2 @@
+# Ajossa ei tarvita ulkopuolisia kirjastoja.
+# Testit käyttävät Pythonin omaa unittest-moduulia.

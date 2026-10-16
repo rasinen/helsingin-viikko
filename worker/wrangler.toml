@@ -1,0 +1,9 @@
+name = "helsingin-viikko"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+workers_dev = true
+
+# Tunniste täytetään, kun tallennustila luodaan. Katso README.
+[[kv_namespaces]]
+binding = "DATA"
+id = "REPLACE_ME"

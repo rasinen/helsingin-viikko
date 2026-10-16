@@ -1,0 +1,24 @@
+{
+  "interested_topics": [
+    "musiikki",
+    "konsertti",
+    "keikka",
+    "teatteri",
+    "tanssi",
+    "näytelmä",
+    "esitys",
+    "elokuva",
+    "ruoka",
+    "markkinat",
+    "festivaali"
+  ],
+  "excluded_topics": [],
+  "free_only": false,
+  "recommendation_count": 8,
+  "novelty_ratio": 0.2,
+  "email_per_day": 10,
+  "email_spanning_limit": 8,
+  "permanent_days_limit": 150,
+  "worker_url": "",
+  "site_url": "https://rasinen.github.io/helsingin-viikko/"
+}

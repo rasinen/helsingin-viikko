@@ -1,0 +1,11 @@
+private/
+__pycache__/
+.pytest_cache/
+*.pyc
+.venv/
+.env
+site/posti-esikatselu.html
+site/personal.preview.json
+worker/.wrangler/
+worker/node_modules/
+.DS_Store
