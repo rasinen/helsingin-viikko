@@ -13,7 +13,7 @@ export default {
     }
     try {
       if (url.pathname === "/v" && request.method === "GET") return await voteFromLink(url, env);
-      if (url.pathname === "/v" && request.method === "POST") return await voteFromPage(request, env);
+      if (url.pathname === "/v" && request.method === "POST") return await votePost(request, env);
       if (url.pathname === "/c" && request.method === "GET") return await clickFromLink(url, env);
       if (url.pathname === "/personal" && request.method === "GET") return await personal(request, env);
       if (url.pathname === "/reset" && request.method === "POST") return await reset(request, env);
@@ -28,7 +28,35 @@ export default {
 };
 
 async function voteFromLink(url, env) {
-  const payload = await verify(url.searchParams.get("k") || "", env.FEEDBACK_SECRET || "");
+  const token = url.searchParams.get("k") || "";
+  const payload = await verify(token, env.FEEDBACK_SECRET || "");
+  if (!payload || payload.role !== "vote" || !VOTES.has(payload.v) || payload.v === "click") {
+    return text("Linkki ei kelpaa tai se on vanhentunut.", 400);
+  }
+  const labels = { up: "Pidän", down: "Ei kiinnosta", going: "Menen tai kävin" };
+  const label = labels[payload.v] || "Palaute";
+  return html(
+    `<!doctype html><html lang="fi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>${escapeAttr(label)}</title>
+    <body style="font-family:Georgia,serif;background:#f3efe6;color:#1a1814;padding:32px;max-width:36rem">
+    <h1>${escapeAttr(label)}</h1>
+    <p>Tallennetaanko tämä valinta? Se vaikuttaa seuraavaan Helsingin viikkoon. Viimeisin valinta samasta tapahtumasta korvaa aiemman.</p>
+    <form method="post" action="/v">
+      <input type="hidden" name="k" value="${escapeAttr(token)}">
+      <button style="font:inherit;background:#14352c;color:#f3efe6;border:0;border-radius:999px;padding:12px 18px">Tallenna</button>
+    </form>
+    </body></html>`
+  );
+}
+
+async function votePost(request, env) {
+  const type = request.headers.get("content-type") || "";
+  if (type.includes("application/json")) return await voteFromPage(request, env);
+  return await voteFromForm(request, env);
+}
+
+async function voteFromForm(request, env) {
+  const params = new URLSearchParams(await request.text());
+  const payload = await verify(params.get("k") || "", env.FEEDBACK_SECRET || "");
   if (!payload || payload.role !== "vote" || !VOTES.has(payload.v) || payload.v === "click") {
     return text("Linkki ei kelpaa tai se on vanhentunut.", 400);
   }
@@ -38,7 +66,7 @@ async function voteFromLink(url, env) {
     `<!doctype html><html lang="fi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Kiitos</title>
     <body style="font-family:Georgia,serif;background:#f3efe6;color:#1a1814;padding:32px">
     <h1>Kiitos, palaute tallennettiin.</h1>
-    <p>Se vaikuttaa seuraavaan Helsingin viikkoon. Viimeisin valinta samasta tapahtumasta korvaa aiemman.</p>
+    <p>Se vaikuttaa seuraavaan Helsingin viikkoon.</p>
     ${site ? `<p><a href="${escapeAttr(site)}">Palaa viikkosivulle</a></p>` : ""}
     </body></html>`
   );

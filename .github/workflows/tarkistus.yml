@@ -14,7 +14,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Kokeile peukkua ja nollaa se
+      - name: Päivitä palautteet ja kokeile peukkua
         env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
-        run: python -m src.check_feedback
+        run: |
+          python -m src.deploy_worker
+          python -m src.check_feedback

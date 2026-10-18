@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 
@@ -15,9 +16,12 @@ WORKER = "https://helsingin-viikko.rasinen-viikko.workers.dev"
 DATA = "https://rasinen.github.io/helsingin-viikko/data/2026-10-19.json"
 
 
-def _json(url: str, method: str = "GET", body: dict | None = None, headers: dict | None = None) -> tuple[int, str]:
-    data = json.dumps(body).encode() if body is not None else None
-    request = urllib.request.Request(url, data=data, headers=headers or {}, method=method)
+def _json(url: str, method: str = "GET", body: dict | None = None, headers: dict | None = None, raw: bytes | None = None) -> tuple[int, str]:
+    data = raw if raw is not None else (json.dumps(body).encode() if body is not None else None)
+    hdrs = {"User-Agent": "HelsinginViikko/1.0"}
+    if headers:
+        hdrs.update(headers)
+    request = urllib.request.Request(url, data=data, headers=hdrs, method=method)
     with urllib.request.urlopen(request, timeout=40) as response:
         return response.status, response.read().decode("utf-8")
 
@@ -43,9 +47,18 @@ def main() -> None:
     plain = other[0]
     owner = owner_token(feedback)
     try:
-        status, page = _json(f"{WORKER}/v?k={vote_token(feedback, liked[0]['id'], 'up')}")
-        if status != 200 or "Kiitos" not in page:
-            raise SystemExit("Sähköpostin peukkulinkki ei tallentunut.")
+        token = vote_token(feedback, liked[0]["id"], "up")
+        status, page = _json(f"{WORKER}/v?k={urllib.parse.quote(token)}")
+        if status != 200 or "Tallenna" not in page or "Kiitos, palaute tallennettiin" in page:
+            raise SystemExit("Sähköpostin peukkulinkki ei näytä vahvistusta.")
+        status, saved = _json(
+            f"{WORKER}/v",
+            "POST",
+            raw=urllib.parse.urlencode({"k": token}).encode(),
+            headers={"Content-Type": "application/x-www-form-urlencoded"},
+        )
+        if status != 200 or "Kiitos" not in saved:
+            raise SystemExit("Peukun vahvistus ei tallentunut.")
         for event in liked[1:]:
             _json(
                 f"{WORKER}/v",
