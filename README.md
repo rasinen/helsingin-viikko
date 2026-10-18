@@ -106,10 +106,15 @@ Viesti lähtee oman Gmail-tilisi kautta. Tavallinen Gmail-salasana ei käy. Tarv
 
 ## Palautteiden tallennus (Cloudflare)
 
-Peukutukset eivät mahdu pelkälle staattiselle sivulle. Ne tallennetaan ilmaiseen Cloudflare-palveluun. Tee tämä kerran:
+Peukutukset eivät mahdu pelkälle staattiselle sivulle. Ne tallentuvat ilmaiseen Cloudflare-palveluun. Tili riittää, mutta tarvitaan vielä yksi avain, jotta sunnuntaiajo saa luvan tallentaa. Avainta ei saa kirjoittaa tähän keskusteluun eikä `config.json`-tiedostoon.
 
-1. Luo ilmainen tili osoitteessa [dash.cloudflare.com/sign-up](https://dash.cloudflare.com/sign-up).
-2. Kun tili on valmis, kirjoita minulle keskusteluun pelkkä sana **Cloudflare on valmis**. Älä lähetä salasanoita.
-3. Ohjaan sinut silloin viimeiset klikkaukset, ja kytken palautteet sähköpostiin ja sivuun.
+1. Avaa [API-avaimet](https://dash.cloudflare.com/profile/api-tokens).
+2. Paina **Create Token**.
+3. Etsi rivi **Edit Cloudflare Workers** ja paina **Use template**.
+4. Paina **Continue to summary** ja sitten **Create Token**.
+5. Kopioi avain heti. Cloudflare näyttää sen vain kerran.
+6. Avaa GitHubissa projekti → **Settings** → **Secrets and variables** → **Actions** → **New repository secret**.
+7. Nimeksi täsmälleen `CLOUDFLARE_API_TOKEN` ja arvoksi äskeinen avain. Tallenna.
+8. Kirjoita keskusteluun: avain on tallennettu. Älä liitä itse avainta.
 
-Ennen sitä sivu ja lista toimivat. Peukutuslinkit alkavat tallentua vasta tämän jälkeen.
+Sen jälkeen viikkokirjeen peukut ja sivun painikkeet alkavat tallentua. Avain pysyy samana, kunhan Gmailin sovellussalasanaa ei vaihdeta. Jos vaihdat sen, päivitä vanha `SMTP_PASSWORD`-salaisuus. Seuraava ajo tekee palautteille uuden avaimen itse.

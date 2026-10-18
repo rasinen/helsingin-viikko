@@ -30,14 +30,17 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Kytke palautteet
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+        run: python -m src.deploy_worker
+
       - name: Kokoa viikko
         env:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
-          FEEDBACK_SECRET: ${{ secrets.FEEDBACK_SECRET }}
-          ADMIN_SECRET: ${{ secrets.ADMIN_SECRET }}
-          WORKER_URL: ${{ secrets.WORKER_URL }}
           SITE_URL: ${{ secrets.SITE_URL }}
         run: python -m src.main build
 
@@ -67,8 +70,5 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           EMAIL_TO: ${{ secrets.EMAIL_TO }}
-          FEEDBACK_SECRET: ${{ secrets.FEEDBACK_SECRET }}
-          ADMIN_SECRET: ${{ secrets.ADMIN_SECRET }}
-          WORKER_URL: ${{ secrets.WORKER_URL }}
           SITE_URL: ${{ secrets.SITE_URL }}
         run: python -m src.main send
