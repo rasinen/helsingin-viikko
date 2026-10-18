@@ -4,10 +4,8 @@
     "end": "2026-10-25",
     "label": "19.10.–25.10."
   },
-  "generated_at": "2026-10-18T15:07:12.737778+03:00",
-  "warnings": [
-    "Palautepalvelua ei ole vielä kytketty. Tapahtumat näytetään aikajärjestyksessä."
-  ],
+  "generated_at": "2026-10-18T17:45:42.607599+03:00",
+  "warnings": [],
   "weather": {
     "source": "open-meteo",
     "source_label": "Open-Meteo",
@@ -15,7 +13,7 @@
       {
         "date": "2026-10-19",
         "weekday": "ma",
-        "temp_max": 9,
+        "temp_max": 10,
         "temp_min": 3,
         "precip_prob": 0,
         "precip_mm": 0.0,
@@ -26,10 +24,10 @@
         "date": "2026-10-20",
         "weekday": "ti",
         "temp_max": 9,
-        "temp_min": 7,
+        "temp_min": 4,
         "precip_prob": 0,
         "precip_mm": 0.0,
-        "wind": 5.1,
+        "wind": 5.9,
         "description": "Puolipilvistä"
       },
       {
@@ -37,38 +35,38 @@
         "weekday": "ke",
         "temp_max": 11,
         "temp_min": 8,
-        "precip_prob": 49,
-        "precip_mm": 3.6,
-        "wind": 7.1,
-        "description": "Tiheää tihkua"
+        "precip_prob": 50,
+        "precip_mm": 10.7,
+        "wind": 8.1,
+        "description": "Ukkosta"
       },
       {
         "date": "2026-10-22",
         "weekday": "to",
         "temp_max": 13,
         "temp_min": 11,
-        "precip_prob": 39,
-        "precip_mm": 3.0,
+        "precip_prob": 55,
+        "precip_mm": 0.6,
         "wind": 7.0,
-        "description": "Tiheää tihkua"
+        "description": "Tihkua"
       },
       {
         "date": "2026-10-23",
         "weekday": "pe",
-        "temp_max": 13,
+        "temp_max": 12,
         "temp_min": 10,
-        "precip_prob": 49,
-        "precip_mm": 8.7,
-        "wind": 5.8,
-        "description": "Tihkua"
+        "precip_prob": 50,
+        "precip_mm": 9.9,
+        "wind": 5.5,
+        "description": "Tiheää tihkua"
       },
       {
         "date": "2026-10-24",
         "weekday": "la",
         "temp_max": 12,
         "temp_min": 9,
-        "precip_prob": 53,
-        "precip_mm": 9.9,
+        "precip_prob": 45,
+        "precip_mm": 10.2,
         "wind": 7.3,
         "description": "Sadekuuroja"
       },
@@ -77,13 +75,13 @@
         "weekday": "su",
         "temp_max": 12,
         "temp_min": 11,
-        "precip_prob": 45,
+        "precip_prob": 44,
         "precip_mm": 0.9,
         "wind": 6.8,
         "description": "Heikkoa tihkua"
       }
     ],
-    "summary": "Päivisin noin 9–13 astetta, öisin 3–11. Sateen mahdollisuus on suurin lauantaina (53 %). Tuuli yltyy korkeimmillaan noin 7 metriin sekunnissa."
+    "summary": "Päivisin noin 9–13 astetta, öisin 3–11. Sateen mahdollisuus on suurin torstaina (55 %). Tuuli yltyy korkeimmillaan noin 8 metriin sekunnissa."
   },
   "events": [
     {
@@ -22675,34 +22673,6 @@
       "rescheduled": false
     },
     {
-      "id": "lippupiste:21462284",
-      "name": "Fretti Mercury Etsii Onnea",
-      "description": "Miika Nousiainen - Marzi Nyman - Mariska FRETTI MERCURY ETSII ONNEA Fretti Mercury etsii onnea on syvänmielen musikaali ystävyydestä ja onnen etsimisestä.",
-      "summary": "Miika Nousiainen - Marzi Nyman - Mariska FRETTI MERCURY ETSII ONNEA Fretti Mercury etsii onnea on syvänmielen musikaali ystävyydestä ja onnen etsimisestä.",
-      "start": "2026-10-21T13:00:00+03:00",
-      "end": "2026-10-21T13:00:00+03:00",
-      "date": "2026-10-21",
-      "time_label": "13.00",
-      "end_time_label": "13.00",
-      "place": "Studio Pasila",
-      "address": "Ratamestarinkatu 5",
-      "organiser": "Helsingin Kaupunginteatteri",
-      "free": false,
-      "price_label": "Maksullinen",
-      "price_feature": "price:paid",
-      "keywords": [],
-      "features": [
-        "p:studio pasila",
-        "o:helsingin kaupunginteatteri",
-        "price:paid",
-        "wd:2",
-        "tod:afternoon"
-      ],
-      "url": "https://www.lippu.fi/artist/helsingin-kaupunginteatteri/fretti-mercury-etsii-onnea-4113325/?affiliate=ADV&language=fi",
-      "spanning": false,
-      "rescheduled": true
-    },
-    {
       "id": "helsinki:agp7s5xlqa",
       "name": "Karaoke",
       "description": "Perinteinen karaoke",
@@ -44454,7 +44424,7 @@
     {
       "date": "2026-10-19",
       "title": "Maanantai 19.10.",
-      "weather_line": "Pilvistä · 9° / 3° · sade 0 % · tuuli 3.5 m/s",
+      "weather_line": "Pilvistä · 10° / 3° · sade 0 % · tuuli 3.5 m/s",
       "event_ids": [
         "helsinki:agqh7u6zlu",
         "helsinki:agp7k5w5om",
@@ -44646,7 +44616,7 @@
     {
       "date": "2026-10-20",
       "title": "Tiistai 20.10.",
-      "weather_line": "Puolipilvistä · 9° / 7° · sade 0 % · tuuli 5.1 m/s",
+      "weather_line": "Puolipilvistä · 9° / 4° · sade 0 % · tuuli 5.9 m/s",
       "event_ids": [
         "helsinki:agqh7u62gm",
         "helsinki:agnzps7jsm",
@@ -44875,7 +44845,7 @@
     {
       "date": "2026-10-21",
       "title": "Keskiviikko 21.10.",
-      "weather_line": "Tiheää tihkua · 11° / 8° · sade 49 % · tuuli 7.1 m/s",
+      "weather_line": "Ukkosta · 11° / 8° · sade 50 % · tuuli 8.1 m/s",
       "event_ids": [
         "helsinki:agpmucubwi",
         "helsinki:agpq4zli2i",
@@ -45018,7 +44988,6 @@
         "helsinki:agqnrdxxdm",
         "helsinki:agqtvcm4ea",
         "kursor:9083905",
-        "lippupiste:21462284",
         "helsinki:agp7s5xlqa",
         "helsinki:agp3gl74ta",
         "helsinki:agqdpqbtjy",
@@ -45117,7 +45086,7 @@
     {
       "date": "2026-10-22",
       "title": "Torstai 22.10.",
-      "weather_line": "Tiheää tihkua · 13° / 11° · sade 39 % · tuuli 7 m/s",
+      "weather_line": "Tihkua · 13° / 11° · sade 55 % · tuuli 7 m/s",
       "event_ids": [
         "helsinki:agp4ngex5m",
         "helsinki:agpnilornu",
@@ -45343,7 +45312,7 @@
     {
       "date": "2026-10-23",
       "title": "Perjantai 23.10.",
-      "weather_line": "Tihkua · 13° / 10° · sade 49 % · tuuli 5.8 m/s",
+      "weather_line": "Tiheää tihkua · 12° / 10° · sade 50 % · tuuli 5.5 m/s",
       "event_ids": [
         "helsinki:agqdo3qvhi",
         "helsinki:agqksnscvy",
@@ -45537,7 +45506,7 @@
     {
       "date": "2026-10-24",
       "title": "Lauantai 24.10.",
-      "weather_line": "Sadekuuroja · 12° / 9° · sade 53 % · tuuli 7.3 m/s",
+      "weather_line": "Sadekuuroja · 12° / 9° · sade 45 % · tuuli 7.3 m/s",
       "event_ids": [
         "helsinki:agprzoxhty",
         "helsinki:agqrbnllue",
@@ -45609,7 +45578,7 @@
     {
       "date": "2026-10-25",
       "title": "Sunnuntai 25.10.",
-      "weather_line": "Heikkoa tihkua · 12° / 11° · sade 45 % · tuuli 6.8 m/s",
+      "weather_line": "Heikkoa tihkua · 12° / 11° · sade 44 % · tuuli 6.8 m/s",
       "event_ids": [
         "helsinki:agql5tqisq",
         "helsinki:agqqzwgdhi",
@@ -45773,5 +45742,5 @@
       "festivaali"
     ]
   },
-  "worker_url": ""
+  "worker_url": "https://helsingin-viikko.rasinen-viikko.workers.dev"
 }
