@@ -4,7 +4,7 @@
     "end": "2026-10-25",
     "label": "19.10.–25.10."
   },
-  "generated_at": "2026-10-18T17:45:42.607599+03:00",
+  "generated_at": "2026-10-18T19:16:25.431066+03:00",
   "warnings": [],
   "weather": {
     "source": "open-meteo",
@@ -13,29 +13,29 @@
       {
         "date": "2026-10-19",
         "weekday": "ma",
-        "temp_max": 10,
+        "temp_max": 9,
         "temp_min": 3,
         "precip_prob": 0,
         "precip_mm": 0.0,
-        "wind": 3.5,
+        "wind": 3.4,
         "description": "Pilvistä"
       },
       {
         "date": "2026-10-20",
         "weekday": "ti",
-        "temp_max": 9,
-        "temp_min": 4,
+        "temp_max": 10,
+        "temp_min": 5,
         "precip_prob": 0,
         "precip_mm": 0.0,
-        "wind": 5.9,
-        "description": "Puolipilvistä"
+        "wind": 7.4,
+        "description": "Selkeää"
       },
       {
         "date": "2026-10-21",
         "weekday": "ke",
         "temp_max": 11,
         "temp_min": 8,
-        "precip_prob": 50,
+        "precip_prob": 58,
         "precip_mm": 10.7,
         "wind": 8.1,
         "description": "Ukkosta"
@@ -45,7 +45,7 @@
         "weekday": "to",
         "temp_max": 13,
         "temp_min": 11,
-        "precip_prob": 55,
+        "precip_prob": 59,
         "precip_mm": 0.6,
         "wind": 7.0,
         "description": "Tihkua"
@@ -55,7 +55,7 @@
         "weekday": "pe",
         "temp_max": 12,
         "temp_min": 10,
-        "precip_prob": 50,
+        "precip_prob": 34,
         "precip_mm": 9.9,
         "wind": 5.5,
         "description": "Tiheää tihkua"
@@ -81,7 +81,7 @@
         "description": "Heikkoa tihkua"
       }
     ],
-    "summary": "Päivisin noin 9–13 astetta, öisin 3–11. Sateen mahdollisuus on suurin torstaina (55 %). Tuuli yltyy korkeimmillaan noin 8 metriin sekunnissa."
+    "summary": "Päivisin noin 9–13 astetta, öisin 3–11. Sateen mahdollisuus on suurin torstaina (59 %). Tuuli yltyy korkeimmillaan noin 8 metriin sekunnissa."
   },
   "events": [
     {
@@ -22673,6 +22673,34 @@
       "rescheduled": false
     },
     {
+      "id": "lippupiste:21462284",
+      "name": "Fretti Mercury Etsii Onnea",
+      "description": "Miika Nousiainen - Marzi Nyman - Mariska FRETTI MERCURY ETSII ONNEA Fretti Mercury etsii onnea on syvänmielen musikaali ystävyydestä ja onnen etsimisestä.",
+      "summary": "Miika Nousiainen - Marzi Nyman - Mariska FRETTI MERCURY ETSII ONNEA Fretti Mercury etsii onnea on syvänmielen musikaali ystävyydestä ja onnen etsimisestä.",
+      "start": "2026-10-21T13:00:00+03:00",
+      "end": "2026-10-21T13:00:00+03:00",
+      "date": "2026-10-21",
+      "time_label": "13.00",
+      "end_time_label": "13.00",
+      "place": "Studio Pasila",
+      "address": "Ratamestarinkatu 5",
+      "organiser": "Helsingin Kaupunginteatteri",
+      "free": false,
+      "price_label": "Maksullinen",
+      "price_feature": "price:paid",
+      "keywords": [],
+      "features": [
+        "p:studio pasila",
+        "o:helsingin kaupunginteatteri",
+        "price:paid",
+        "wd:2",
+        "tod:afternoon"
+      ],
+      "url": "https://www.lippu.fi/artist/helsingin-kaupunginteatteri/fretti-mercury-etsii-onnea-4113325/?affiliate=ADV&language=fi",
+      "spanning": false,
+      "rescheduled": true
+    },
+    {
       "id": "helsinki:agp7s5xlqa",
       "name": "Karaoke",
       "description": "Perinteinen karaoke",
@@ -33540,34 +33568,6 @@
       "rescheduled": true
     },
     {
-      "id": "lippupiste:21462285",
-      "name": "Fretti Mercury Etsii Onnea",
-      "description": "Miika Nousiainen - Marzi Nyman - Mariska FRETTI MERCURY ETSII ONNEA Fretti Mercury etsii onnea on syvänmielen musikaali ystävyydestä ja onnen etsimisestä.",
-      "summary": "Miika Nousiainen - Marzi Nyman - Mariska FRETTI MERCURY ETSII ONNEA Fretti Mercury etsii onnea on syvänmielen musikaali ystävyydestä ja onnen etsimisestä.",
-      "start": "2026-10-22T18:00:00+03:00",
-      "end": "2026-10-22T18:00:00+03:00",
-      "date": "2026-10-22",
-      "time_label": "18.00",
-      "end_time_label": "18.00",
-      "place": "Studio Pasila",
-      "address": "Ratamestarinkatu 5",
-      "organiser": "Helsingin Kaupunginteatteri",
-      "free": false,
-      "price_label": "Maksullinen",
-      "price_feature": "price:paid",
-      "keywords": [],
-      "features": [
-        "p:studio pasila",
-        "o:helsingin kaupunginteatteri",
-        "price:paid",
-        "wd:3",
-        "tod:evening"
-      ],
-      "url": "https://www.lippu.fi/artist/helsingin-kaupunginteatteri/fretti-mercury-etsii-onnea-4113325/?affiliate=ADV&language=fi",
-      "spanning": false,
-      "rescheduled": true
-    },
-    {
       "id": "helsinki:agpwakph3q",
       "name": "Timo Tuominen: Brel - Trubaduuri",
       "description": "Timo Tuomisen kuudes Brel-esitys tekee aivan uuden aluevaltauksen: ilta yksin kitaran kanssa, chansonin mestarin nuoruusvuosien lauluja esittäen!",
@@ -42384,6 +42384,34 @@
       "rescheduled": true
     },
     {
+      "id": "lippupiste:21462300",
+      "name": "Fretti Mercury Etsii Onnea",
+      "description": "Miika Nousiainen - Marzi Nyman - Mariska FRETTI MERCURY ETSII ONNEA Fretti Mercury etsii onnea on syvänmielen musikaali ystävyydestä ja onnen etsimisestä.",
+      "summary": "Miika Nousiainen - Marzi Nyman - Mariska FRETTI MERCURY ETSII ONNEA Fretti Mercury etsii onnea on syvänmielen musikaali ystävyydestä ja onnen etsimisestä.",
+      "start": "2026-10-24T13:00:00+03:00",
+      "end": "2026-10-24T13:00:00+03:00",
+      "date": "2026-10-24",
+      "time_label": "13.00",
+      "end_time_label": "13.00",
+      "place": "Studio Pasila",
+      "address": "Ratamestarinkatu 5",
+      "organiser": "Helsingin Kaupunginteatteri",
+      "free": false,
+      "price_label": "Maksullinen",
+      "price_feature": "price:paid",
+      "keywords": [],
+      "features": [
+        "p:studio pasila",
+        "o:helsingin kaupunginteatteri",
+        "price:paid",
+        "wd:5",
+        "tod:afternoon"
+      ],
+      "url": "https://www.lippu.fi/artist/helsingin-kaupunginteatteri/fretti-mercury-etsii-onnea-4113325/?affiliate=ADV&language=fi",
+      "spanning": false,
+      "rescheduled": true
+    },
+    {
       "id": "helsinki:agqt6oinx4",
       "name": "Suomenlinnan opastettu yleisökierros englanniksi",
       "description": "Linnoitusalueella toteutettavalla englanninkielisellä kävelykierroksella kuullaan linnoituksen mielenkiintoisesta historiasta ja nykypäivästä.",
@@ -44424,7 +44452,7 @@
     {
       "date": "2026-10-19",
       "title": "Maanantai 19.10.",
-      "weather_line": "Pilvistä · 10° / 3° · sade 0 % · tuuli 3.5 m/s",
+      "weather_line": "Pilvistä · 9° / 3° · sade 0 % · tuuli 3.4 m/s",
       "event_ids": [
         "helsinki:agqh7u6zlu",
         "helsinki:agp7k5w5om",
@@ -44616,7 +44644,7 @@
     {
       "date": "2026-10-20",
       "title": "Tiistai 20.10.",
-      "weather_line": "Puolipilvistä · 9° / 4° · sade 0 % · tuuli 5.9 m/s",
+      "weather_line": "Selkeää · 10° / 5° · sade 0 % · tuuli 7.4 m/s",
       "event_ids": [
         "helsinki:agqh7u62gm",
         "helsinki:agnzps7jsm",
@@ -44845,7 +44873,7 @@
     {
       "date": "2026-10-21",
       "title": "Keskiviikko 21.10.",
-      "weather_line": "Ukkosta · 11° / 8° · sade 50 % · tuuli 8.1 m/s",
+      "weather_line": "Ukkosta · 11° / 8° · sade 58 % · tuuli 8.1 m/s",
       "event_ids": [
         "helsinki:agpmucubwi",
         "helsinki:agpq4zli2i",
@@ -44988,6 +45016,7 @@
         "helsinki:agqnrdxxdm",
         "helsinki:agqtvcm4ea",
         "kursor:9083905",
+        "lippupiste:21462284",
         "helsinki:agp7s5xlqa",
         "helsinki:agp3gl74ta",
         "helsinki:agqdpqbtjy",
@@ -45086,7 +45115,7 @@
     {
       "date": "2026-10-22",
       "title": "Torstai 22.10.",
-      "weather_line": "Tihkua · 13° / 11° · sade 55 % · tuuli 7 m/s",
+      "weather_line": "Tihkua · 13° / 11° · sade 59 % · tuuli 7 m/s",
       "event_ids": [
         "helsinki:agp4ngex5m",
         "helsinki:agpnilornu",
@@ -45289,7 +45318,6 @@
         "kulke:69278",
         "kulke:69342",
         "kulke:69546",
-        "lippupiste:21462285",
         "helsinki:agpwakph3q",
         "helsinki:agqgmmp7v4",
         "helsinki:agqgoxzoua",
@@ -45312,7 +45340,7 @@
     {
       "date": "2026-10-23",
       "title": "Perjantai 23.10.",
-      "weather_line": "Tiheää tihkua · 12° / 10° · sade 50 % · tuuli 5.5 m/s",
+      "weather_line": "Tiheää tihkua · 12° / 10° · sade 34 % · tuuli 5.5 m/s",
       "event_ids": [
         "helsinki:agqdo3qvhi",
         "helsinki:agqksnscvy",
@@ -45536,6 +45564,7 @@
         "helsinki:agqrmyo3h4",
         "kulke:69344",
         "lippupiste:21426662",
+        "lippupiste:21462300",
         "helsinki:agqt6oinx4",
         "helsinki:agqbj7ig2a",
         "helsinki:agqltmbvsi",
