@@ -4,7 +4,7 @@
     "end": "2026-11-01",
     "label": "26.10.–01.11."
   },
-  "generated_at": "2026-10-19T18:22:18.756972+03:00",
+  "generated_at": "2026-10-19T18:38:27.194085+03:00",
   "warnings": [],
   "weather": {
     "source": "open-meteo",
@@ -16,7 +16,7 @@
         "temp_max": 12,
         "temp_min": 10,
         "precip_prob": 59,
-        "precip_mm": 8.4,
+        "precip_mm": 8.8,
         "wind": 7.6,
         "description": "Tihkua"
       },
@@ -26,7 +26,7 @@
         "temp_max": 12,
         "temp_min": 10,
         "precip_prob": 51,
-        "precip_mm": 0.3,
+        "precip_mm": 0.4,
         "wind": 5.7,
         "description": "Heikkoa tihkua"
       },
@@ -36,7 +36,7 @@
         "temp_max": 12,
         "temp_min": 10,
         "precip_prob": 33,
-        "precip_mm": 3.3,
+        "precip_mm": 3.0,
         "wind": 7.4,
         "description": "Heikkoa tihkua"
       },
@@ -46,7 +46,7 @@
         "temp_max": 12,
         "temp_min": 10,
         "precip_prob": 33,
-        "precip_mm": 1.5,
+        "precip_mm": 1.8,
         "wind": 4.7,
         "description": "Heikkoa tihkua"
       },
@@ -54,7 +54,7 @@
         "date": "2026-10-30",
         "weekday": "pe",
         "temp_max": 11,
-        "temp_min": 9,
+        "temp_min": 10,
         "precip_prob": 23,
         "precip_mm": 0.0,
         "wind": 4.6,
@@ -63,7 +63,7 @@
       {
         "date": "2026-10-31",
         "weekday": "la",
-        "temp_max": 11,
+        "temp_max": 10,
         "temp_min": 8,
         "precip_prob": 18,
         "precip_mm": 0.0,
@@ -73,15 +73,15 @@
       {
         "date": "2026-11-01",
         "weekday": "su",
-        "temp_max": 10,
-        "temp_min": 6,
+        "temp_max": 9,
+        "temp_min": 7,
         "precip_prob": 29,
         "precip_mm": 0.0,
         "wind": 5.8,
         "description": "Pilvistä"
       }
     ],
-    "summary": "Päivisin noin 10–12 astetta, öisin 6–10. Sateen mahdollisuus on suurin maanantaina (59 %). Tuuli yltyy korkeimmillaan noin 8 metriin sekunnissa."
+    "summary": "Päivisin noin 9–12 astetta, öisin 7–10. Sateen mahdollisuus on suurin maanantaina (59 %). Tuuli yltyy korkeimmillaan noin 8 metriin sekunnissa."
   },
   "events": [
     {
@@ -41187,7 +41187,7 @@
     {
       "date": "2026-10-30",
       "title": "Perjantai 30.10.",
-      "weather_line": "Pilvistä · 11° / 9° · sade 23 % · tuuli 4.6 m/s",
+      "weather_line": "Pilvistä · 11° / 10° · sade 23 % · tuuli 4.6 m/s",
       "event_ids": [
         "helsinki:agqdo3qv2a",
         "helsinki:agqksnsduy",
@@ -41362,7 +41362,7 @@
     {
       "date": "2026-10-31",
       "title": "Lauantai 31.10.",
-      "weather_line": "Pilvistä · 11° / 8° · sade 18 % · tuuli 5.7 m/s",
+      "weather_line": "Pilvistä · 10° / 8° · sade 18 % · tuuli 5.7 m/s",
       "event_ids": [
         "helsinki:agqmhnnbyq",
         "helsinki:agprfw2mqm",
@@ -41400,7 +41400,7 @@
     {
       "date": "2026-11-01",
       "title": "Sunnuntai 1.11.",
-      "weather_line": "Pilvistä · 10° / 6° · sade 29 % · tuuli 5.8 m/s",
+      "weather_line": "Pilvistä · 9° / 7° · sade 29 % · tuuli 5.8 m/s",
       "event_ids": [
         "helsinki:agqrxawgsm",
         "helsinki:agqutdak74",
