@@ -1,6 +1,7 @@
 import unittest
 from datetime import date, datetime
 
+from src.emailer import _html
 from src.events import clean_events, prepare_event, price_info
 from src.render import assert_public_safe
 from src.tokens import owner_token, sign, verify
@@ -91,6 +92,29 @@ class TokenTests(unittest.TestCase):
         self.assertIsNone(verify(token + "x", secret))
         other = sign({"role": "owner", "exp": 10}, secret)
         self.assertIsNone(verify(other, secret))
+
+
+class EmailOrderTests(unittest.TestCase):
+    def test_omitted_notes_come_after_the_heading(self):
+        html = _html(
+            {
+                "week": {"label": "26.10.–01.11."},
+                "weather": None,
+                "warnings": [],
+                "learning_active": False,
+                "explicit_count": 0,
+                "calibration_events": [],
+                "spanning_events": [{"id": "s", "name": "Näyttely", "time_label": "Koko viikko", "place": "Stoa", "free": True, "url": "https://example.com/nayttely"}],
+                "spanning_omitted": 75,
+                "day_sections": [{"title": "Maanantai 26.10.", "weather_line": "", "events": [], "omitted": 174}],
+                "site_url": "https://example.com",
+                "feedback_secret": "",
+                "worker_url": "",
+            }
+        )
+        self.assertLess(html.index("Viikko 26.10."), html.index("Lisäksi 75"))
+        self.assertLess(html.index("Maanantai 26.10."), html.index("Lisäksi 174"))
+        self.assertIn("<td", html[html.index("Lisäksi 75") - 180 : html.index("Lisäksi 75")])
 
 
 class PrivacyTests(unittest.TestCase):

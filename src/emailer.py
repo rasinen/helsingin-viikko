@@ -199,7 +199,9 @@ def _html(bundle: dict) -> str:
             parts.append(_card(event, bundle, recommended=False))
         if bundle.get("spanning_omitted"):
             parts.append(
-                f"<p style='padding:0 24px;font-family:Arial,sans-serif;font-size:14px;color:#6d665c;'>Lisäksi {bundle['spanning_omitted']} muuta koko viikon tapahtumaa verkkosivulla.</p>"
+                "<tr><td style='padding:0 24px 8px;font-family:Arial,sans-serif;font-size:14px;color:#6d665c;'>"
+                f"Lisäksi {bundle['spanning_omitted']} muuta koko viikon tapahtumaa verkkosivulla."
+                "</td></tr>"
             )
     for day in bundle.get("day_sections") or []:
         parts.append(_section(day["title"], day.get("weather_line") or ""))
@@ -209,7 +211,9 @@ def _html(bundle: dict) -> str:
             parts.append(_card(event, bundle, recommended=False))
         if day.get("omitted"):
             parts.append(
-                f"<p style='padding:0 24px 8px;font-family:Arial,sans-serif;font-size:14px;color:#6d665c;'>Lisäksi {day['omitted']} muuta tapahtumaa tältä päivältä verkkosivulla.</p>"
+                "<tr><td style='padding:0 24px 12px;font-family:Arial,sans-serif;font-size:14px;color:#6d665c;'>"
+                f"Lisäksi {day['omitted']} muuta tapahtumaa tältä päivältä verkkosivulla."
+                "</td></tr>"
             )
     site = _site(bundle.get("site_url") or "", bundle.get("feedback_secret") or "")
     parts.append("<tr><td style='padding:8px 24px 28px;font-family:Arial,sans-serif;'>")
