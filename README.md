@@ -44,6 +44,8 @@ Jokaisen tapahtuman alla on kolme valintaa:
 
 Saman tapahtuman uusi valinta korvaa vanhan. Ennen kymmentä selkeää valintaa sivu ei väitä oppineensa mitään.
 
+Sähköpostissa painike avaa ensin pienen sivun. Paina siellä **Tallenna**, niin valinta jää muistiin. Pelkkä viestin avaaminen ei vielä tallenna mitään.
+
 Noin viidesosa suosituspaikoista on tapahtumia, joiden aiheita et ole vielä arvioinut. Ne on merkitty sanoilla **Uutta sinulle**.
 
 Kun avaat tapahtuman linkin sähköpostista, välissä käydään pienessä palvelussa ja käynti lasketaan **pieneksi plussaksi** (selvästi heikompi kuin peukku). Varsinainen sivu aukeaa heti perään.
