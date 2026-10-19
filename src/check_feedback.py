@@ -46,6 +46,8 @@ def main() -> None:
     held = music[10]
     plain = other[0]
     owner = owner_token(feedback)
+    _status, raw = _json(f"{WORKER}/admin/bundle", headers={"Authorization": f"Bearer {admin}"})
+    original = json.loads(raw)
     try:
         token = vote_token(feedback, liked[0]["id"], "up")
         status, page = _json(f"{WORKER}/v?k={urllib.parse.quote(token)}")
@@ -76,19 +78,30 @@ def main() -> None:
             if vote.get("event_id") == liked[0]["id"] and not vote.get("features"):
                 vote["features"] = liked[0]["features"]
         now = datetime.now(timezone.utc)
+        weights = rebuild_weights(votes, now)
         before = score_event(held, {}, None)
-        after = score_event(held, rebuild_weights(votes, now), None)
-        plain_after = score_event(plain, rebuild_weights(votes, now), None)
-        if not learning_active(votes) or after <= before or plain_after >= after:
-            raise SystemExit(f"Pisteet eivät muuttuneet odotetusti: musiikki {before}->{after}, muu {plain_after}.")
-        print(f"Peukku tallentui. Musiikki {before} -> {after}. Muu tapahtuma jäi {plain_after}.")
+        after = score_event(held, weights, None)
+        control = score_event({"id": "vertailu", "features": ["k:zz-ei-missaan"]}, weights, None)
+        if not learning_active(votes) or after <= before or control != before:
+            raise SystemExit(f"Pisteet eivät muuttuneet odotetusti: musiikki {before}->{after}, vertailu {control}.")
+        print(f"Peukku tallentui. Musiikki {before} -> {after}. Vieras aihe pysyi {control}.")
     finally:
-        _json(f"{WORKER}/reset", "POST", {"k": owner}, {"Content-Type": "application/json"})
+        _json(
+            f"{WORKER}/admin/bundle",
+            "PUT",
+            {
+                "votes": original.get("votes") or [],
+                "weights": original.get("weights") or {},
+                "labels": original.get("labels") or {},
+                "weeks": original.get("weeks") or {},
+            },
+            {"Authorization": f"Bearer {admin}", "Content-Type": "application/json"},
+        )
         _status, raw = _json(f"{WORKER}/admin/bundle", headers={"Authorization": f"Bearer {admin}"})
         left = len(json.loads(raw).get("votes") or [])
-        if left:
-            raise SystemExit(f"Kokeilu ei tyhjentynyt, ääniä jäljellä {left}.")
-        print("Kokeilu tyhjennettiin. Omat peukut alkavat nollasta.")
+        if left != len(original.get("votes") or []):
+            raise SystemExit("Kokeilun jälkeen peukut eivät palautuneet ennalleen.")
+        print(f"Kokeilu peruttu. Aiempia peukkuja tallessa {left}.")
 
 
 if __name__ == "__main__":
