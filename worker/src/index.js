@@ -61,12 +61,14 @@ async function voteFromForm(request, env) {
     return text("Linkki ei kelpaa tai se on vanhentunut.", 400);
   }
   await remember(env, { event_id: String(payload.e || ""), vote: payload.v });
+  const bundle = await load(env);
+  const count = explicitVotes(bundle.votes).length;
   const site = await ownerLink(env);
   return html(
     `<!doctype html><html lang="fi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Kiitos</title>
     <body style="font-family:Georgia,serif;background:#f3efe6;color:#1a1814;padding:32px">
     <h1>Kiitos, palaute tallennettiin.</h1>
-    <p>Se vaikuttaa seuraavaan Helsingin viikkoon.</p>
+    <p>Selkeitä peukutuksia on nyt ${count}. Seuraava viikkokirje ottaa ne huomioon.</p>
     ${site ? `<p><a href="${escapeAttr(site)}">Palaa viikkosivulle</a></p>` : ""}
     </body></html>`
   );
@@ -102,14 +104,19 @@ async function personal(request, env) {
   const bundle = await load(env);
   const week = url.searchParams.get("week");
   const weeks = bundle.weeks || {};
-  const chosen = week && weeks[week] ? weeks[week] : latestWeek(weeks);
+  const chosen = (week && weeks[week] ? weeks[week] : latestWeek(weeks)) || {
+    learning_active: false,
+    explicit_count: 0,
+    scores: {},
+    recommended_ids: [],
+    learned: { positive: [], negative: [] },
+  };
+  const mine = explicitVotes(bundle.votes);
   return json(
-    chosen || {
-      learning_active: false,
-      explicit_count: 0,
-      scores: {},
-      recommended_ids: [],
-      learned: { positive: [], negative: [] },
+    {
+      ...chosen,
+      explicit_count: mine.length,
+      my_votes: Object.fromEntries(mine.map((vote) => [vote.event_id, vote.vote])),
     },
     200,
     request
@@ -179,6 +186,17 @@ async function load(env) {
   } catch {
     return { votes: [], weights: {}, labels: {}, weeks: {} };
   }
+}
+
+function explicitVotes(votes) {
+  const byEvent = new Map();
+  const ordered = [...(votes || [])].sort((a, b) => String(a.ts || "").localeCompare(String(b.ts || "")));
+  for (const vote of ordered) {
+    if (!vote || !vote.event_id || vote.vote === "click") continue;
+    if (!["up", "down", "going"].includes(vote.vote)) continue;
+    byEvent.set(String(vote.event_id), vote);
+  }
+  return [...byEvent.values()];
 }
 
 function latestWeek(weeks) {

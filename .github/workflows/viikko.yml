@@ -5,6 +5,11 @@ on:
     # Sunnuntaisin klo 16:00 UTC, Suomessa noin klo 18 tai 19.
     - cron: "0 16 * * 0"
   workflow_dispatch:
+    inputs:
+      laheta_posti:
+        description: Lähetä sähköposti
+        type: boolean
+        default: true
 
 permissions:
   contents: write
@@ -66,6 +71,7 @@ jobs:
           fi
 
       - name: Lähetä sähköposti
+        if: github.event_name != 'workflow_dispatch' || inputs.laheta_posti == true
         env:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}

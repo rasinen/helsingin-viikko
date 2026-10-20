@@ -158,6 +158,8 @@ function card(event, options = {}) {
   const place = [event.place || "Paikka ei tiedossa", event.address].filter(Boolean).join(", ");
   const score = personal.learning_active && scores[event.id] != null
     ? `<span class="badge">${scores[event.id]} pistettä</span>` : "";
+  const mine = (personal.my_votes || {})[event.id];
+  const pressed = (kind) => (mine === kind ? " aria-pressed=\"true\"" : "");
   return `<article class="card${novel ? " novel" : ""}">
     <div class="when">${esc(when)}</div>
     <div class="badges">${badges.map((badge) => `<span class="badge${badge.includes("muuttunut") ? " warn" : ""}">${esc(badge)}</span>`).join("")}${score}</div>
@@ -168,11 +170,17 @@ function card(event, options = {}) {
     <div class="badges">${(event.keywords || []).slice(0, 4).map((keyword) => `<span class="badge">${esc(keyword)}</span>`).join("")}</div>
     ${reason ? `<div class="reason">${esc(reason)}</div>` : ""}
     <div class="actions">
-      <button type="button" data-vote="up" data-id="${esc(event.id)}">Pidän</button>
-      <button type="button" data-vote="down" data-id="${esc(event.id)}">Ei kiinnosta</button>
-      <button type="button" data-vote="going" data-id="${esc(event.id)}">Menen tai kävin</button>
+      <button type="button" data-vote="up" data-id="${esc(event.id)}"${pressed("up")}>Pidän</button>
+      <button type="button" data-vote="down" data-id="${esc(event.id)}"${pressed("down")}>Ei kiinnosta</button>
+      <button type="button" data-vote="going" data-id="${esc(event.id)}"${pressed("going")}>Menen tai kävin</button>
     </div>
   </article>`;
+}
+
+function countText(count, active) {
+  if (active) return `Selkeitä peukutuksia on ${count}. Lista on järjestetty niiden mukaan.`;
+  if (count >= 10) return `Selkeitä peukutuksia on ${count}. Seuraava viikkokirje järjestää listan niiden mukaan. Mitään ei piiloteta.`;
+  return `Selkeitä peukutuksia on ${count}/10. Ennen sitä tapahtumat ovat aikajärjestyksessä. Valitse alta noin parikymmentä erilaista tapahtumaa, niin seuraava viikko osuu paremmin. Mitään ei piiloteta.`;
 }
 
 function weatherHtml() {
@@ -206,7 +214,7 @@ function render() {
     const sample = (data.calibration_ids || []).map((id) => map.get(id)).filter(Boolean);
     top = `<section class="section" id="kalibrointi">
       <h2>Auta suodatinta alkuun</h2>
-      <p class="muted">Selkeitä peukutuksia on ${count}/10. Ennen sitä tapahtumat ovat aikajärjestyksessä. Valitse alta noin parikymmentä erilaista tapahtumaa, niin seuraava viikko osuu paremmin. Mitään ei piiloteta.</p>
+      <p class="muted">${countText(count, active)}</p>
       <div class="grid">${sample.map((event) => card(event)).join("")}</div>
     </section>
     ${interestHtml(map)}`;
@@ -345,6 +353,18 @@ async function vote(id, kind, button) {
       body: JSON.stringify({ k: state.token, e: id, vote: kind, features: event.features || [], label: event.name }),
     });
     if (!response.ok) throw new Error("tallennus");
+    if (!state.personal) state.personal = { explicit_count: 0, my_votes: {}, learning_active: false };
+    const mine = state.personal.my_votes || {};
+    const isNew = !mine[id];
+    mine[id] = kind;
+    state.personal.my_votes = mine;
+    if (isNew) state.personal.explicit_count = (state.personal.explicit_count || 0) + 1;
+    const note = document.querySelector("#kalibrointi .muted");
+    if (note) note.textContent = countText(state.personal.explicit_count || 0, state.personal.learning_active);
+    const row = button.parentElement;
+    if (row) {
+      for (const other of row.querySelectorAll("button")) other.removeAttribute("aria-pressed");
+    }
     button.setAttribute("aria-pressed", "true");
     state.message = "Tallennettu. Seuraava viikkokirje ottaa tämän huomioon. Viimeisin valinta korvaa aiemman.";
   } catch {
