@@ -4,7 +4,7 @@
     "end": "2026-11-01",
     "label": "26.10.–01.11."
   },
-  "generated_at": "2026-10-19T18:38:27.194085+03:00",
+  "generated_at": "2026-10-20T20:12:07.028360+03:00",
   "warnings": [],
   "weather": {
     "source": "open-meteo",
@@ -15,73 +15,73 @@
         "weekday": "ma",
         "temp_max": 12,
         "temp_min": 10,
-        "precip_prob": 59,
-        "precip_mm": 8.8,
-        "wind": 7.6,
-        "description": "Tihkua"
+        "precip_prob": 53,
+        "precip_mm": 0.6,
+        "wind": 7.1,
+        "description": "Heikkoa tihkua"
       },
       {
         "date": "2026-10-27",
         "weekday": "ti",
-        "temp_max": 12,
-        "temp_min": 10,
-        "precip_prob": 51,
-        "precip_mm": 0.4,
-        "wind": 5.7,
-        "description": "Heikkoa tihkua"
+        "temp_max": 11,
+        "temp_min": 8,
+        "precip_prob": 53,
+        "precip_mm": 0.0,
+        "wind": 5.0,
+        "description": "Pilvistä"
       },
       {
         "date": "2026-10-28",
         "weekday": "ke",
-        "temp_max": 12,
-        "temp_min": 10,
-        "precip_prob": 33,
-        "precip_mm": 3.0,
-        "wind": 7.4,
+        "temp_max": 10,
+        "temp_min": 7,
+        "precip_prob": 37,
+        "precip_mm": 2.4,
+        "wind": 4.3,
         "description": "Heikkoa tihkua"
       },
       {
         "date": "2026-10-29",
         "weekday": "to",
-        "temp_max": 12,
-        "temp_min": 10,
-        "precip_prob": 33,
-        "precip_mm": 1.8,
-        "wind": 4.7,
-        "description": "Heikkoa tihkua"
+        "temp_max": 11,
+        "temp_min": 9,
+        "precip_prob": 38,
+        "precip_mm": 4.8,
+        "wind": 5.4,
+        "description": "Tihkua"
       },
       {
         "date": "2026-10-30",
         "weekday": "pe",
         "temp_max": 11,
-        "temp_min": 10,
-        "precip_prob": 23,
-        "precip_mm": 0.0,
+        "temp_min": 9,
+        "precip_prob": 27,
+        "precip_mm": 2.4,
         "wind": 4.6,
-        "description": "Pilvistä"
+        "description": "Tihkua"
       },
       {
         "date": "2026-10-31",
         "weekday": "la",
         "temp_max": 10,
-        "temp_min": 8,
-        "precip_prob": 18,
-        "precip_mm": 0.0,
-        "wind": 5.7,
-        "description": "Pilvistä"
+        "temp_min": 6,
+        "precip_prob": 21,
+        "precip_mm": 6.6,
+        "wind": 5.4,
+        "description": "Tihkua"
       },
       {
         "date": "2026-11-01",
         "weekday": "su",
-        "temp_max": 9,
-        "temp_min": 7,
-        "precip_prob": 29,
-        "precip_mm": 0.0,
-        "wind": 5.8,
-        "description": "Pilvistä"
+        "temp_max": 10,
+        "temp_min": 5,
+        "precip_prob": 27,
+        "precip_mm": 3.3,
+        "wind": 6.6,
+        "description": "Tihkua"
       }
     ],
-    "summary": "Päivisin noin 9–12 astetta, öisin 7–10. Sateen mahdollisuus on suurin maanantaina (59 %). Tuuli yltyy korkeimmillaan noin 8 metriin sekunnissa."
+    "summary": "Päivisin noin 10–12 astetta, öisin 5–10. Sateen mahdollisuus on suurin maanantaina (53 %). Tuuli yltyy korkeimmillaan noin 7 metriin sekunnissa."
   },
   "events": [
     {
@@ -2608,6 +2608,42 @@
         "span:multi"
       ],
       "url": "https://www.visitsealife.com/helsinki/koe-naee-meillae/tapahtumat/merenalainen-suojelupartio-tulossa-lokakuussa-2026/",
+      "spanning": true,
+      "rescheduled": false
+    },
+    {
+      "id": "helsinki:agqvrl4tka",
+      "name": "Marja Patrikainen ja Tuukka Peltonen: Outo laakso",
+      "description": "Marja Patrikaisen ja Tuukka Peltosen yhteisnäyttely koostuu sekatekniikkaveistoksista ja puupiirroksista.",
+      "summary": "Marja Patrikaisen ja Tuukka Peltosen yhteisnäyttely koostuu sekatekniikkaveistoksista ja puupiirroksista.",
+      "start": "2026-10-23T12:00:00+03:00",
+      "end": "2026-11-15T16:00:00+02:00",
+      "date": null,
+      "time_label": "12.00",
+      "end_time_label": "",
+      "place": "HAA Galleria",
+      "address": "Suomenlinna C 1",
+      "organiser": "Helsingin Taiteilijaseura",
+      "free": true,
+      "price_label": "Ilmainen",
+      "price_feature": "price:free",
+      "keywords": [
+        "veistokset",
+        "taide",
+        "kulttuuritapahtumat",
+        "näyttelyt"
+      ],
+      "features": [
+        "k:veistokset",
+        "k:taide",
+        "k:kulttuuritapahtumat",
+        "k:näyttelyt",
+        "p:haa galleria",
+        "o:helsingin taiteilijaseura",
+        "price:free",
+        "span:multi"
+      ],
+      "url": "https://www.helsingintaiteilijaseura.fi/nayttelytoiminta/haa-galleria",
       "spanning": true,
       "rescheduled": false
     },
@@ -23980,34 +24016,6 @@
       "rescheduled": false
     },
     {
-      "id": "lippupiste:21462287",
-      "name": "Fretti Mercury Etsii Onnea",
-      "description": "Miika Nousiainen - Marzi Nyman - Mariska FRETTI MERCURY ETSII ONNEA Fretti Mercury etsii onnea on syvänmielen musikaali ystävyydestä ja onnen etsimisestä.",
-      "summary": "Miika Nousiainen - Marzi Nyman - Mariska FRETTI MERCURY ETSII ONNEA Fretti Mercury etsii onnea on syvänmielen musikaali ystävyydestä ja onnen etsimisestä.",
-      "start": "2026-10-28T18:00:00+02:00",
-      "end": "2026-10-28T18:00:00+02:00",
-      "date": "2026-10-28",
-      "time_label": "18.00",
-      "end_time_label": "18.00",
-      "place": "Studio Pasila",
-      "address": "Ratamestarinkatu 5",
-      "organiser": "Helsingin Kaupunginteatteri",
-      "free": false,
-      "price_label": "Maksullinen",
-      "price_feature": "price:paid",
-      "keywords": [],
-      "features": [
-        "p:studio pasila",
-        "o:helsingin kaupunginteatteri",
-        "price:paid",
-        "wd:2",
-        "tod:evening"
-      ],
-      "url": "https://www.lippu.fi/artist/helsingin-kaupunginteatteri/fretti-mercury-etsii-onnea-4113325/?affiliate=ADV&language=fi",
-      "spanning": false,
-      "rescheduled": true
-    },
-    {
       "id": "helsinki:agpdtlbijm",
       "name": "Tapanilan lukupiiri",
       "description": "Tervetuloa mukaan keskustelemaan kirjallisuudesta Tapanilan kirjastossa kerran kuussa keskiviikkoisin.",
@@ -28684,39 +28692,6 @@
       "rescheduled": false
     },
     {
-      "id": "helsinki:agqb5jnxga",
-      "name": "Bingo",
-      "description": "Pelataan yhdessä bingoa!",
-      "summary": "Pelataan yhdessä bingoa!",
-      "start": "2026-10-29T12:30:00+02:00",
-      "end": "2026-10-29T13:30:00+02:00",
-      "date": "2026-10-29",
-      "time_label": "12.30",
-      "end_time_label": "13.30",
-      "place": "Stadin yhteisötalo Lassila",
-      "address": "Kaupintie 16",
-      "organiser": "Stadin yhteisötalo Lassila",
-      "free": true,
-      "price_label": "Ilmainen",
-      "price_feature": "price:free",
-      "keywords": [
-        "osallistuminen",
-        "pelit"
-      ],
-      "features": [
-        "k:osallistuminen",
-        "k:pelit",
-        "p:stadin yhteisötalo lassila",
-        "o:stadin yhteisötalo lassila",
-        "price:free",
-        "wd:3",
-        "tod:afternoon"
-      ],
-      "url": "https://tapahtumat.hel.fi/fi/events/helsinki:agqb5jnxga",
-      "spanning": false,
-      "rescheduled": false
-    },
-    {
       "id": "helsinki:agqfqfqgey",
       "name": "Olkkari",
       "description": "Senioreiden keskusteluryhmä",
@@ -29919,41 +29894,6 @@
       "url": "https://tapahtumat.hel.fi/fi/events/helsinki:agqa7s73le",
       "spanning": false,
       "rescheduled": true
-    },
-    {
-      "id": "helsinki:agqb5i3nke",
-      "name": "Taitotuokio",
-      "description": "Taitotuokio on kaikille avoin ja jatkuva työpaja, jossa pääset kokeilemaan vaihtuvia kädentaitoteemoja rennossa ilmapiirissä.",
-      "summary": "Taitotuokio on kaikille avoin ja jatkuva työpaja, jossa pääset kokeilemaan vaihtuvia kädentaitoteemoja rennossa ilmapiirissä.",
-      "start": "2026-10-29T14:00:00+02:00",
-      "end": "2026-10-29T16:30:00+02:00",
-      "date": "2026-10-29",
-      "time_label": "14.00",
-      "end_time_label": "16.30",
-      "place": "Stadin yhteisötalo Lassila",
-      "address": "Kaupintie 16",
-      "organiser": "Stadin yhteisötalo Lassila",
-      "free": true,
-      "price_label": "Ilmainen",
-      "price_feature": "price:free",
-      "keywords": [
-        "Työpajat",
-        "osallistuminen",
-        "kädentaidot"
-      ],
-      "features": [
-        "k:työpajat",
-        "k:osallistuminen",
-        "k:kädentaidot",
-        "p:stadin yhteisötalo lassila",
-        "o:stadin yhteisötalo lassila",
-        "price:free",
-        "wd:3",
-        "tod:afternoon"
-      ],
-      "url": "https://tapahtumat.hel.fi/fi/events/helsinki:agqb5i3nke",
-      "spanning": false,
-      "rescheduled": false
     },
     {
       "id": "helsinki:agqdf2x7mi",
@@ -31749,7 +31689,7 @@
     },
     {
       "id": "kulke:69570",
-      "name": "The Mystery Wires & Mape Veijalainen: A Tribute to Cliff & The Shadows",
+      "name": "The Mystery Wires & Mape Veijalainen: A Tribute to Cliff & The Shadows – Klubi-ilta",
       "description": "Luvassa rautalankaklassikoita ja nuorisoelokuvamusiikkia Cliff Richard & The Shadows -tyyliin – jo kymmenettä kertaa Vuotalossa!",
       "summary": "Luvassa rautalankaklassikoita ja nuorisoelokuvamusiikkia Cliff Richard & The Shadows -tyyliin – jo kymmenettä kertaa Vuotalossa!",
       "start": "2026-10-29T18:00:00+02:00",
@@ -32018,6 +31958,34 @@
         "tod:evening"
       ],
       "url": "https://www.lippu.fi/artist/helsingin-kaupunginteatteri/kotijoukot-4113322/?affiliate=ADV&language=fi",
+      "spanning": false,
+      "rescheduled": true
+    },
+    {
+      "id": "lippupiste:22019566",
+      "name": "När Baba Faller I Poolen Är Kl. 23.47 Premiär",
+      "description": "Astrid Menasanch Tobieson NÄR BABA FALLER I POOLEN ÄR KL.",
+      "summary": "Astrid Menasanch Tobieson NÄR BABA FALLER I POOLEN ÄR KL.",
+      "start": "2026-10-29T18:30:00+02:00",
+      "end": "2026-10-29T18:30:00+02:00",
+      "date": "2026-10-29",
+      "time_label": "18.30",
+      "end_time_label": "18.30",
+      "place": "Lilla Teatern",
+      "address": "Yrjönkatu 30",
+      "organiser": "Helsingin Kaupunginteatteri",
+      "free": false,
+      "price_label": "Maksullinen",
+      "price_feature": "price:paid",
+      "keywords": [],
+      "features": [
+        "p:lilla teatern",
+        "o:helsingin kaupunginteatteri",
+        "price:paid",
+        "wd:3",
+        "tod:evening"
+      ],
+      "url": "https://www.lippu.fi/artist/helsingin-kaupunginteatteri/naer-baba-faller-i-poolen-aer-kl-23-47-4218805/?affiliate=ADV&language=fi",
       "spanning": false,
       "rescheduled": true
     },
@@ -39105,6 +39073,41 @@
       "rescheduled": false
     },
     {
+      "id": "helsinki:agqvsdyxke",
+      "name": "Hyvinvoiva kissa",
+      "description": "Suomen Kissaliiton terveys ja -koulutustoimikunta järjestää kissan hyvinvointiin keskittyvän tilaisuuden yhteistyössä kolmen tunnetun tietokirjailijan kanssa.",
+      "summary": "Suomen Kissaliiton terveys ja -koulutustoimikunta järjestää kissan hyvinvointiin keskittyvän tilaisuuden yhteistyössä kolmen tunnetun tietokirjailijan kanssa.",
+      "start": "2026-10-31T13:00:00+02:00",
+      "end": "2026-10-31T15:00:00+02:00",
+      "date": "2026-10-31",
+      "time_label": "13.00",
+      "end_time_label": "15.00",
+      "place": "Keskustakirjasto Oodi",
+      "address": "Töölönlahdenkatu 4",
+      "organiser": "Suomen Kissaliitto ry",
+      "free": true,
+      "price_label": "Ilmainen",
+      "price_feature": "price:free",
+      "keywords": [
+        "keskustelu",
+        "kulttuuritapahtumat",
+        "kirjallisuus"
+      ],
+      "features": [
+        "k:keskustelu",
+        "k:kulttuuritapahtumat",
+        "k:kirjallisuus",
+        "p:keskustakirjasto oodi",
+        "o:suomen kissaliitto ry",
+        "price:free",
+        "wd:5",
+        "tod:afternoon"
+      ],
+      "url": "https://tapahtumat.hel.fi/fi/events/helsinki:agqvsdyxke",
+      "spanning": false,
+      "rescheduled": false
+    },
+    {
       "id": "helsinki:agqt6oiq64",
       "name": "Suomenlinnan opastettu yleisökierros englanniksi",
       "description": "Linnoitusalueella toteutettavalla englanninkielisellä kävelykierroksella kuullaan linnoituksen mielenkiintoisesta historiasta ja nykypäivästä.",
@@ -40348,7 +40351,7 @@
     {
       "date": "2026-10-26",
       "title": "Maanantai 26.10.",
-      "weather_line": "Tihkua · 12° / 10° · sade 59 % · tuuli 7.6 m/s",
+      "weather_line": "Heikkoa tihkua · 12° / 10° · sade 53 % · tuuli 7.1 m/s",
       "event_ids": [
         "helsinki:agqh7u64fe",
         "helsinki:agp7k5xftq",
@@ -40539,7 +40542,7 @@
     {
       "date": "2026-10-27",
       "title": "Tiistai 27.10.",
-      "weather_line": "Heikkoa tihkua · 12° / 10° · sade 51 % · tuuli 5.7 m/s",
+      "weather_line": "Pilvistä · 11° / 8° · sade 53 % · tuuli 5 m/s",
       "event_ids": [
         "helsinki:agqh7u64yy",
         "helsinki:agnzps7lr4",
@@ -40765,7 +40768,7 @@
     {
       "date": "2026-10-28",
       "title": "Keskiviikko 28.10.",
-      "weather_line": "Heikkoa tihkua · 12° / 10° · sade 33 % · tuuli 7.4 m/s",
+      "weather_line": "Heikkoa tihkua · 10° / 7° · sade 37 % · tuuli 4.3 m/s",
       "event_ids": [
         "helsinki:agpmucuexq",
         "helsinki:agpq4zllx4",
@@ -40951,7 +40954,6 @@
         "kulke:69552",
         "kulke:69861",
         "kursor:9161570",
-        "lippupiste:21462287",
         "helsinki:agpdtlbijm",
         "helsinki:agprytky44",
         "helsinki:agqgoxzpqi",
@@ -40972,7 +40974,7 @@
     {
       "date": "2026-10-29",
       "title": "Torstai 29.10.",
-      "weather_line": "Heikkoa tihkua · 12° / 10° · sade 33 % · tuuli 4.7 m/s",
+      "weather_line": "Tihkua · 11° / 9° · sade 38 % · tuuli 5.4 m/s",
       "event_ids": [
         "helsinki:agpnilovyu",
         "helsinki:agqh7u66b4",
@@ -41082,7 +41084,6 @@
         "helsinki:agp7mcayqm",
         "helsinki:agpp3nkgvi",
         "helsinki:agqa6wa5mi",
-        "helsinki:agqb5jnxga",
         "helsinki:agqfqfqgey",
         "elo:7ac2c712-4a90-4834-8237-811ef97c5464",
         "helsinki:agoj5djwea",
@@ -41116,7 +41117,6 @@
         "helsinki:agpyhubkqy",
         "helsinki:agqa7dleha",
         "helsinki:agqa7s73le",
-        "helsinki:agqb5i3nke",
         "helsinki:agqdf2x7mi",
         "helsinki:agqlg4nlma",
         "helsinki:agqmruuwye",
@@ -41175,6 +41175,7 @@
         "lippupiste:21426648",
         "lippupiste:21462196",
         "lippupiste:21462584",
+        "lippupiste:22019566",
         "kursor:9005880",
         "kursor:9126460",
         "helsinki:agp7c2hwjy",
@@ -41187,7 +41188,7 @@
     {
       "date": "2026-10-30",
       "title": "Perjantai 30.10.",
-      "weather_line": "Pilvistä · 11° / 10° · sade 23 % · tuuli 4.6 m/s",
+      "weather_line": "Tihkua · 11° / 9° · sade 27 % · tuuli 4.6 m/s",
       "event_ids": [
         "helsinki:agqdo3qv2a",
         "helsinki:agqksnsduy",
@@ -41362,7 +41363,7 @@
     {
       "date": "2026-10-31",
       "title": "Lauantai 31.10.",
-      "weather_line": "Pilvistä · 10° / 8° · sade 18 % · tuuli 5.7 m/s",
+      "weather_line": "Tihkua · 10° / 6° · sade 21 % · tuuli 5.4 m/s",
       "event_ids": [
         "helsinki:agqmhnnbyq",
         "helsinki:agprfw2mqm",
@@ -41376,6 +41377,7 @@
         "helsinki:agqrxawf2m",
         "helsinki:agqutdakr4",
         "helsinki:agqgoxzrii",
+        "helsinki:agqvsdyxke",
         "helsinki:agqt6oiq64",
         "helsinki:agqpobxvnq",
         "helsinki:agqvgovhhq",
@@ -41400,7 +41402,7 @@
     {
       "date": "2026-11-01",
       "title": "Sunnuntai 1.11.",
-      "weather_line": "Pilvistä · 9° / 7° · sade 29 % · tuuli 5.8 m/s",
+      "weather_line": "Tihkua · 10° / 5° · sade 27 % · tuuli 6.6 m/s",
       "event_ids": [
         "helsinki:agqrxawgsm",
         "helsinki:agqutdak74",
@@ -41491,6 +41493,7 @@
     "helsinki:agqts2bu2u",
     "helsinki:agnosrmlqq",
     "helsinki:agqib4vh5i",
+    "helsinki:agqvrl4tka",
     "helsinki:agppqrhdxe",
     "helsinki:agpqhjxree",
     "helsinki:agqoqghwza",
