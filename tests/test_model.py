@@ -115,6 +115,21 @@ class ModelTests(unittest.TestCase):
         self.assertIn("musiikista", text)
         self.assertIn("Tavastia", text)
 
+    def test_same_show_on_two_nights_is_recommended_once(self):
+        votes = [vote(f"v{i}", "up", ["k:teatteri"], self.now) for i in range(10)]
+        weights = rebuild_weights(votes, self.now)
+        first = event("ti", ["k:teatteri"], start="2026-10-27T18:30:00+02:00")
+        second = event("ke", ["k:teatteri"], start="2026-10-28T18:30:00+02:00")
+        first["name"] = second["name"] = "& Julia"
+        first["place"] = second["place"] = "Helsingin Kaupunginteatteri"
+        picked = select_recommended(
+            [first, second],
+            weights,
+            votes,
+            {"recommendation_count": 8, "novelty_ratio": 0},
+        )
+        self.assertEqual(len(picked), 1)
+
 
 if __name__ == "__main__":
     unittest.main()

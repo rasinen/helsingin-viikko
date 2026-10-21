@@ -147,18 +147,24 @@ function filteredEvents() {
 function card(event, options = {}) {
   const personal = state.personal || {};
   const scores = personal.scores || {};
-  const novel = (personal.novel_ids || []).includes(event.id) || options.novel;
-  const reason = options.reason || (personal.reasons || {})[event.id] || "";
+  const occ = event.occurrences || [event];
+  const novel = occ.some((item) => (personal.novel_ids || []).includes(item.id)) || options.novel;
+  const reason = options.reason || occ.map((item) => (personal.reasons || {})[item.id]).find(Boolean) || "";
   const badges = [];
   if (event.free) badges.push("Ilmainen");
   else if (event.price_label) badges.push(event.price_label);
   if (novel) badges.push("Uutta sinulle");
-  if (event.rescheduled) badges.push("Aikataulu muuttunut");
-  const when = event.spanning ? "Koko viikko" : `${event.time_label || ""}${event.end_time_label ? "–" + event.end_time_label : ""}`;
+  if (occ.some((item) => item.rescheduled)) badges.push("Aikataulu muuttunut");
+  const when = timesLabel(event);
   const place = [event.place || "Paikka ei tiedossa", event.address].filter(Boolean).join(", ");
-  const score = personal.learning_active && scores[event.id] != null
-    ? `<span class="badge">${scores[event.id]} pistettä</span>` : "";
-  const mine = (personal.my_votes || {})[event.id];
+  const best = occ.reduce((top, item) => {
+    const value = scores[item.id];
+    return value == null ? top : top == null ? value : Math.max(top, value);
+  }, null);
+  const score = personal.learning_active && best != null
+    ? `<span class="badge">${best} pistettä</span>` : "";
+  const mine = occ.map((item) => (personal.my_votes || {})[item.id]).find(Boolean);
+  const voteId = (occ.find((item) => (personal.my_votes || {})[item.id]) || occ[0]).id;
   const pressed = (kind) => (mine === kind ? " aria-pressed=\"true\"" : "");
   return `<article class="card${novel ? " novel" : ""}">
     <div class="when">${esc(when)}</div>
@@ -170,11 +176,57 @@ function card(event, options = {}) {
     <div class="badges">${(event.keywords || []).slice(0, 4).map((keyword) => `<span class="badge">${esc(keyword)}</span>`).join("")}</div>
     ${reason ? `<div class="reason">${esc(reason)}</div>` : ""}
     <div class="actions">
-      <button type="button" data-vote="up" data-id="${esc(event.id)}"${pressed("up")}>Pidän</button>
-      <button type="button" data-vote="down" data-id="${esc(event.id)}"${pressed("down")}>Ei kiinnosta</button>
-      <button type="button" data-vote="going" data-id="${esc(event.id)}"${pressed("going")}>Menen tai kävin</button>
+      <button type="button" data-vote="up" data-id="${esc(voteId)}"${pressed("up")}>Pidän</button>
+      <button type="button" data-vote="down" data-id="${esc(voteId)}"${pressed("down")}>Ei kiinnosta</button>
+      <button type="button" data-vote="going" data-id="${esc(voteId)}"${pressed("going")}>Menen tai kävin</button>
     </div>
   </article>`;
+}
+
+function showKey(event) {
+  const clean = (value) => String(value || "").toLowerCase().replace(/\s+/g, " ").trim();
+  return `${clean(event.name)}|${clean(event.place)}`;
+}
+
+function mergeShows(events) {
+  const groups = new Map();
+  for (const event of events) {
+    const key = showKey(event);
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(event);
+  }
+  const scores = (state.personal && state.personal.scores) || {};
+  return [...groups.values()].map((list) => {
+    const ordered = [...list].sort((a, b) => (a.start || "").localeCompare(b.start || "") || a.id.localeCompare(b.id));
+    const best = [...ordered].sort((a, b) => (scores[b.id] || 0) - (scores[a.id] || 0) || (a.start || "").localeCompare(b.start || ""))[0];
+    return { ...ordered[0], occurrences: ordered, scoreValue: scores[best.id] };
+  });
+}
+
+const WEEKDAYS = ["su", "ma", "ti", "ke", "to", "pe", "la"];
+
+function shortWhen(event) {
+  const date = event.date || "";
+  if (!date) return event.time_label || "";
+  const weekday = WEEKDAYS[new Date(`${date}T12:00:00`).getDay()];
+  return `${weekday} ${date.slice(8)}.${date.slice(5, 7)}. klo ${event.time_label || ""}`;
+}
+
+function timesLabel(event) {
+  const occ = event.occurrences || [event];
+  if (occ.length === 1) {
+    if (event.spanning) return "Koko viikko";
+    const clock = event.time_label || "";
+    return event.end_time_label ? `${clock}–${event.end_time_label}` : clock;
+  }
+  const labels = [];
+  for (const item of occ) {
+    const label = shortWhen(item);
+    if (label && !labels.includes(label)) labels.push(label);
+  }
+  const shown = labels.slice(0, 4);
+  const extra = labels.length - shown.length;
+  return shown.join(" · ") + (extra ? ` · +${extra} muuta` : "");
 }
 
 function countText(count, active) {
@@ -202,7 +254,7 @@ function render() {
   const active = Boolean(personal && personal.learning_active);
   const count = personal ? personal.explicit_count || 0 : 0;
   const map = byId();
-  const events = filteredEvents();
+  const shows = mergeShows(filteredEvents());
   const topicOptions = topics().map((topic) => `<option ${state.filters.topic === topic ? "selected" : ""}>${esc(topic)}</option>`).join("");
   const dayOptions = (data.days || []).map((day) => `<option value="${esc(day.date)}" ${state.filters.day === day.date ? "selected" : ""}>${esc(day.title)} (${day.event_ids.length})</option>`).join("");
   const weekOptions = state.weeks.map((week) => `<option value="${esc(week.id)}" ${week.id === state.weekId ? "selected" : ""}>${esc(week.label)}</option>`).join("");
@@ -211,7 +263,7 @@ function render() {
   if (location.hash === "#opittu") {
     top = learnedHtml(personal, count);
   } else if (!active) {
-    const sample = (data.calibration_ids || []).map((id) => map.get(id)).filter(Boolean);
+    const sample = mergeShows((data.calibration_ids || []).map((id) => map.get(id)).filter(Boolean));
     top = `<section class="section" id="kalibrointi">
       <h2>Auta suodatinta alkuun</h2>
       <p class="muted">${countText(count, active)}</p>
@@ -219,13 +271,18 @@ function render() {
     </section>
     ${interestHtml(map)}`;
   } else {
-    const recommended = (personal.recommended_ids || []).map((id) => map.get(id)).filter(Boolean);
+    const recommended = mergeShows((personal.recommended_ids || []).map((id) => map.get(id)).filter(Boolean));
     top = `<section class="section"><h2>Sinulle suositeltua</h2>
       <p class="muted">Noin viidesosa paikoista on varattu aiheille, joita et ole vielä arvioinut. Ne on merkitty sanalla ”Uutta sinulle”.</p>
       <div class="grid">${recommended.map((event) => card(event, { novel: (personal.novel_ids || []).includes(event.id), reason: (personal.reasons || {})[event.id] })).join("")}</div>
     </section>`;
   }
-  const grouped = state.filters.day ? "" : daysHtml(events);
+  const flatScore = state.filters.sort === "score" && active && !state.filters.day;
+  const program = state.filters.day
+    ? `<div class="list">${shows.map((event) => card(event)).join("") || "<p class='empty'>Ei tapahtumia näillä rajauksilla.</p>"}</div>`
+    : flatScore
+      ? `<div class="list">${[...shows].sort((a, b) => (b.scoreValue || 0) - (a.scoreValue || 0) || (a.start || "").localeCompare(b.start || "")).map((event) => card(event)).join("")}</div>`
+      : daysHtml(shows);
   app.innerHTML = `
     <header class="hero">
       <div class="wrap hero-row">
@@ -244,7 +301,7 @@ function render() {
       ${top}
       <section class="section" id="ohjelma">
         <h2>Koko ohjelma</h2>
-        <p class="muted">${data.events.length} tapahtumaa. Rajaa listaa, jos haluat nähdä vähemmän. Mikään ei katoa pysyvästi.</p>
+        <p class="muted">${data.events.length} tapahtumaa. Sama esitys eri iltoina näkyy kerran, ja ajat ovat samalla kortilla.</p>
         <div class="filters">
           <input id="q" placeholder="Hae nimellä, paikalla tai sanalla" value="${esc(state.filters.text)}">
           <select id="topic"><option value="">Kaikki aiheet</option>${topicOptions}</select>
@@ -255,7 +312,7 @@ function render() {
           </select>
           <label class="text-btn"><input id="free" type="checkbox" ${state.filters.free ? "checked" : ""}> Vain ilmaiset</label>
         </div>
-        ${state.filters.day ? `<div class="list">${events.map((event) => card(event)).join("") || "<p class='empty'>Ei tapahtumia näillä rajauksilla.</p>"}</div>` : grouped}
+        ${program}
       </section>
       ${location.hash === "#opittu" ? "" : learnedHtml(personal, count)}
       <footer>
@@ -268,7 +325,7 @@ function render() {
 
 function interestHtml(map) {
   const ids = state.data.interest_ids || [];
-  const events = ids.map((id) => map.get(id)).filter(Boolean);
+  const events = mergeShows(ids.map((id) => map.get(id)).filter(Boolean));
   if (!events.length) return "";
   return `<section class="section"><h2>Valitsemistasi aiheista</h2>
     <p class="muted">Tämä perustuu asetuksiin, ei vielä peukutuksiin. Aiheita voi muuttaa myöhemmin.</p>
@@ -278,7 +335,7 @@ function interestHtml(map) {
 function daysHtml(events) {
   const spanning = events.filter((event) => event.spanning);
   const blocks = (state.data.days || []).map((day) => {
-    const list = events.filter((event) => event.date === day.date);
+    const list = events.filter((event) => !event.spanning && event.date === day.date);
     return `<section class="day-block">
       <div class="day-head"><h3>${esc(day.title)}</h3><span class="muted">${esc(day.weather_line || "")}</span></div>
       <div class="list">${list.map((event) => card(event)).join("") || "<p class='muted'>Ei tapahtumia näillä rajauksilla.</p>"}</div>

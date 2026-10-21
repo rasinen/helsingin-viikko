@@ -187,6 +187,23 @@ def seen_keywords(votes: list[dict]) -> set[str]:
     return seen
 
 
+def show_key(event: dict) -> tuple[str, str]:
+    return (norm(event.get("name") or ""), norm(event.get("place") or ""))
+
+
+def unique_shows(events: list[dict]) -> list[dict]:
+    """Sama nimi samassa paikassa on yksi näytös, vaikka kellonaikoja olisi useita."""
+    seen = set()
+    chosen = []
+    for event in events:
+        key = show_key(event)
+        if key in seen:
+            continue
+        seen.add(key)
+        chosen.append(event)
+    return chosen
+
+
 def is_novel(event: dict, seen: set[str]) -> bool:
     keywords = [
         feature
@@ -265,16 +282,24 @@ def select_recommended(
     novel_slots = int(round(count * ratio))
     seen = seen_keywords(votes)
     decorated = []
-    for event in events:
-        decorated.append(
+    seen_shows = set()
+    for item in sorted(
+        [
             {
                 "id": event["id"],
                 "score": score_event(event, weights, config),
                 "novel": is_novel(event, seen),
                 "event": event,
             }
-        )
-    decorated.sort(key=lambda item: (-item["score"], item["id"]))
+            for event in events
+        ],
+        key=lambda item: (-item["score"], item["id"]),
+    ):
+        key = show_key(item["event"])
+        if key in seen_shows:
+            continue
+        seen_shows.add(key)
+        decorated.append(item)
     regulars = [item for item in decorated if not item["novel"]]
     novels = [item for item in decorated if item["novel"]]
     picked = regulars[: max(0, count - novel_slots)] + novels[:novel_slots]
@@ -333,9 +358,11 @@ def topic_strength(event: dict, topics: list[str] | None) -> float:
 
 def interest_ids(events: list[dict], config: dict, limit: int = 8) -> list[str]:
     topics = config.get("interested_topics") or []
-    ranked = sorted(
-        events,
-        key=lambda event: (-topic_strength(event, topics), event.get("start") or "", event["id"]),
+    ranked = unique_shows(
+        sorted(
+            events,
+            key=lambda event: (-topic_strength(event, topics), event.get("start") or "", event["id"]),
+        )
     )
     return [event["id"] for event in ranked if topic_strength(event, topics) > 0][:limit]
 

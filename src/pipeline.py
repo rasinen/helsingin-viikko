@@ -21,6 +21,7 @@ from .model import (
     score_event,
     select_recommended,
     topic_strength,
+    unique_shows,
 )
 from .render import write_site
 from .weather import fetch_weather
@@ -109,9 +110,9 @@ def _pick_for_mail(events: list[dict], config: dict, weights: dict, active: bool
         score = score_event(event, weights, config) if active else 50
         return (-strength, -score, event.get("start") or "", event["id"])
 
-    ranked = sorted(pool, key=sort_key)
+    ranked = unique_shows(sorted(pool, key=sort_key))
     chosen = ranked[: max(0, limit)]
-    omitted = max(0, len(pool) - len(chosen))
+    omitted = max(0, len(ranked) - len(chosen))
     chosen.sort(key=lambda event: (event.get("start") or "", event["id"]))
     return chosen, omitted
 
